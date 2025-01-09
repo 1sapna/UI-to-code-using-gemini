@@ -3,9 +3,16 @@ import pathlib
 from PIL import Image
 import google.generativeai as genai
 
-# Configure the API key directly in the script
-API_KEY = 'AIzaSyDOVFXeB4nqpZOyGNvraTIBlEWYVzd7mzo'
-genai.configure(api_key=API_KEY)
+
+API_KEY = os.getenv("GOOGLE_API_KEY")
+if not API_KEY:
+    st.error("Error: GOOGLE_API_KEY not found in the environment variables. Please set it in the .env file.")
+else:
+    # Configure Google API with the secret GOOGLE_API_KEY
+    genai.configure(api_key=API_KEY)
+
+
+
 
 # Generation configuration
 generation_config = {
