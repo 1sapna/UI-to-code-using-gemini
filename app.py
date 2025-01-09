@@ -4,16 +4,12 @@ from PIL import Image
 import google.generativeai as genai
 import os
 
-
 API_KEY = os.getenv("GOOGLE_API_KEY")
 if not API_KEY:
     st.error("Error: GOOGLE_API_KEY not found in the environment variables. Please set it in the .env file.")
 else:
     # Configure Google API with the secret GOOGLE_API_KEY
     genai.configure(api_key=API_KEY)
-
-
-
 
 # Generation configuration
 generation_config = {
@@ -59,9 +55,7 @@ def send_message_to_model(message, image_path):
 
 # Streamlit app
 def main():
-    st.title("Gemini 1.5 Pro, UI to Code 👨‍💻 ")
-    st.subheader('Made with ❤️ by [Skirano](https://x.com/skirano)')
-
+    st.title("UI to HTML Code using Gemini")
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
